@@ -12,7 +12,7 @@ public class Day extends RealmObject {
     private Date date;
     private String occassion;
     private String color;
-    
+
     public Date getDate() {
         return date;
     }
