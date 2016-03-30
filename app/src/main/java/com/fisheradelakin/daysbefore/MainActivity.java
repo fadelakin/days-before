@@ -1,5 +1,6 @@
 package com.fisheradelakin.daysbefore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
         Realm realm = Realm.getDefaultInstance();
@@ -48,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void addDay() {
-
+        Intent intent = new Intent(this, NewDayActivity.class);
+        startActivity(intent);
     }
 
 
