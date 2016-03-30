@@ -6,12 +6,25 @@
               android:layout_height="match_parent"
               android:padding="16dp">
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              tools:text="Nigeria"
-              android:gravity="center_horizontal"
-              android:textColor="@color/colorPrimaryText"
-              android:textSize="26sp"
-              android:fontFamily="sans-serif-normal"/>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        >
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  tools:text="Nigeria"
+                  android:layout_gravity="center"
+                  android:gravity="center_horizontal"
+                  android:textColor="@color/colorPrimaryText"
+                  android:textSize="26sp"
+                  android:fontFamily="sans-serif-normal"
+                  android:padding="16dp"/>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
