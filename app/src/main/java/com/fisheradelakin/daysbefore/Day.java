@@ -20,7 +20,8 @@ public class Day extends RealmObject implements Serializable {
     @Required
     private String timestamp;
 
-    private String color;
+    @Required
+    private int color;
 
     public Date getDate() {
         return date;
@@ -38,11 +39,11 @@ public class Day extends RealmObject implements Serializable {
         this.occasion = occasion;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 

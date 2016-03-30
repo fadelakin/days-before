@@ -40,9 +40,7 @@ public class Colors {
             "#53bbb4", // aqua
             "#51b46d", // green
             "#e0ab18", // mustard
-            "#637a91", // dark gray
             "#f092b0", // pink
-            "#b7c0c7"  // light gray
 
     };
 
