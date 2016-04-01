@@ -11,8 +11,16 @@ import android.widget.RelativeLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private static final int WRITE_STORAGE_PERMISSION = 1;
+    public static final String FRAGMENT_DIALOG = "dialog";
+
+    private Realm mRealm;
 
     @Bind(R.id.detail_layout) RelativeLayout detailLayout;
 
@@ -24,10 +32,33 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mRealm = Realm.getDefaultInstance();
 
-        // get color from the day passed in and set that color as the background color
-        Day day = (Day) getIntent().getSerializableExtra("day");
-        detailLayout.setBackgroundColor(day.getColor());
+        // get the timestamp for the day passed in and try to find that day
+        String timeStamp = (String) getIntent().getSerializableExtra("time");
+        if (timeStamp != null) {
+            Realm realm = Realm.getDefaultInstance();
+
+            /*RealmQuery<Poem> query = realm.where(Poem.class);
+            query.equalTo("timestamp", poemTimestamp);
+
+            RealmResults<Poem> results = query.findAll();
+            if (results.size() > 0) {
+                Poem poem = results.get(0);
+                mTitleET.setText(poem.getTitle());
+                toolbar.setTitle(poem.getTitle());
+                mPoemET.setText(poem.getPoem());
+                if (poem.getAuthor() != null)
+                    mAuthorET.setText(poem.getAuthor());
+            }*/
+        }
+
+
+        setColor();
+    }
+
+    private void setColor() {
+        /*detailLayout.setBackgroundColor(day.getColor());
 
         // generate a new color based on the background color for the status bar
         // using hsv because it makes it super easy bruh.
@@ -42,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
             w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             w.setStatusBarColor(statusBarColor);
-        }
+        }*/
     }
 
 }

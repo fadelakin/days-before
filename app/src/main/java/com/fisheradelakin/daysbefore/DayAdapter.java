@@ -56,7 +56,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(mContext, DetailActivity.class);
-            intent.putExtra("day", mDays.get(getLayoutPosition()));
+            intent.putExtra("time", mDays.get(getLayoutPosition()).getTimestamp());
             mContext.startActivity(intent);
         }
     }
