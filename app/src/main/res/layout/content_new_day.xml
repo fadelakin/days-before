@@ -18,9 +18,9 @@
               android:layout_height="wrap_content"
               android:id="@+id/occasion_edit"
               android:hint="@string/occasion_hint"
-              android:textColor="@color/colorTextAndIcons"
+              android:textColor="@color/colorPrimaryText"
               android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+              android:layout_marginTop="55dp"/>
 
     <DatePicker
         android:layout_width="wrap_content"
@@ -29,8 +29,8 @@
         android:layout_below="@+id/occasion_edit"
         android:layout_centerHorizontal="true"
         android:headerBackground="@color/colorPrimary"
-        android:background="@color/colorTextAndIcons"
         android:layout_marginTop="25dp"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +41,7 @@
         android:layout_alignParentEnd="true"
         android:background="@android:color/transparent"
         android:textAllCaps="false"
-        android:textColor="@color/colorTextAndIcons"/>
+        android:textColor="@color/colorPrimary"
+        style="?attr/buttonBarButtonStyle"/>
 
 </RelativeLayout>

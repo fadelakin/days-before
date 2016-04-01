@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -23,6 +24,7 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.realm.Realm;
 
 public class NewDayActivity extends AppCompatActivity {
@@ -44,23 +46,6 @@ public class NewDayActivity extends AppCompatActivity {
 
         Colors colors = new Colors();
         mColor = colors.getColor();
-
-        newLayout.setBackgroundColor(mColor);
-
-        // generate a new color based on the background color for the status bar
-        // using hsv because it makes it super easy bruh.
-        float[] hsv = new float[3];
-        Color.colorToHSV(mColor, hsv);
-        hsv[2] *= 0.75f; // value component
-        int statusBarColor = Color.HSVToColor(hsv);
-
-        // set status bar to a darker color of the background
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window w = getWindow();
-            w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            w.setStatusBarColor(statusBarColor);
-        }
     }
 
     private void saveDay() {
@@ -74,7 +59,7 @@ public class NewDayActivity extends AppCompatActivity {
         int year = mDatePicker.getYear();
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, dayOfMonth); // with calendar, i can set hour min and secs as well. :/
+        calendar.set(year, month, dayOfMonth); // with calendar, i can set hour min and secs as well. maybe in a later update
 
         day.setDate(calendar.getTime());
 
@@ -89,10 +74,17 @@ public class NewDayActivity extends AppCompatActivity {
             public void execute(Realm realm) {
                 Toast.makeText(NewDayActivity.this, "Date saved", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NewDayActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
 
+    }
+
+    @OnClick(R.id.save_button)
+    public void save() {
+        saveDay();
     }
 
 }
