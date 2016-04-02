@@ -29,6 +29,8 @@ import io.realm.Realm;
 
 public class NewDayActivity extends AppCompatActivity {
 
+    // TODO: Clean up UI
+
     @Bind(R.id.occasion_edit) EditText occasion;
     @Bind(R.id.datePicker) DatePicker mDatePicker;
     @Bind(R.id.new_layout) RelativeLayout newLayout;

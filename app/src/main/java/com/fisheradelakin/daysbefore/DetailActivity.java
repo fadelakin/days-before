@@ -26,6 +26,10 @@ import io.realm.RealmResults;
 public class DetailActivity extends AppCompatActivity {
 
     // TODO: implement runnable for hours, mins, and secs
+    // TODO: rework ui and how it looks
+    // TODO: add edit option for date and title
+    // TODO: add share option
+    // TODO: > share should involve being able to take a screenshot of the screen so figure that out
 
     @Bind(R.id.detail_layout) RelativeLayout detailLayout;
     @Bind(R.id.occasion_tv) TextView occasion;
@@ -65,7 +69,7 @@ public class DetailActivity extends AppCompatActivity {
                 daysUntil.setText(daysBefore);
 
                 SimpleDateFormat sdf = new SimpleDateFormat("LLLL dd, yyyy", Locale.getDefault());
-                String countingDown = "Counting down to " + sdf.format(date);
+                String countingDown = "Counting down to\n " + sdf.format(date);
                 counting.setText(countingDown);
             }
         }

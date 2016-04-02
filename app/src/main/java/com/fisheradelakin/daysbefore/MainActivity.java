@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     // TODO: > realm.beginTransaction();
     // TODO: > set the values of the updated day
     // TODO: > realm.commitTransaction();
+    // TODO: update visual tings. fix cardview
+    // TODO: rework main ui. probably experiment with gridlayout? idk
 
     @Bind(R.id.fab) FloatingActionButton fab;
     @Bind(R.id.toolbar) Toolbar toolbar;

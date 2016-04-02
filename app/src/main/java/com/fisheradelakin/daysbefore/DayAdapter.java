@@ -17,6 +17,8 @@ import io.realm.RealmResults;
  */
 public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
 
+    // TODO: figure out visual bug with cardview
+
     private Context mContext;
     private RealmResults<Day> mDays;
 
