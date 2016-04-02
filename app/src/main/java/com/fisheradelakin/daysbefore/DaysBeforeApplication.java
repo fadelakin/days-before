@@ -2,6 +2,8 @@ package com.fisheradelakin.daysbefore;
 
 import android.app.Application;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -16,5 +18,7 @@ public class DaysBeforeApplication extends Application {
 
         RealmConfiguration config = new RealmConfiguration.Builder(this).build();
         Realm.setDefaultConfiguration(config);
+
+        JodaTimeAndroid.init(this);
     }
 }

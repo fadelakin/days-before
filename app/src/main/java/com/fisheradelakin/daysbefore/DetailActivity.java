@@ -8,6 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -17,12 +25,17 @@ import io.realm.RealmResults;
 
 public class DetailActivity extends AppCompatActivity {
 
+    // TODO: implement runnable for hours, mins, and secs
+
+    @Bind(R.id.detail_layout) RelativeLayout detailLayout;
+    @Bind(R.id.occasion_tv) TextView occasion;
+    @Bind(R.id.days_until_tv) TextView daysUntil;
+    @Bind(R.id.counting_tv) TextView counting;
+
     private static final int WRITE_STORAGE_PERMISSION = 1;
     public static final String FRAGMENT_DIALOG = "dialog";
 
     private Realm mRealm;
-
-    @Bind(R.id.detail_layout) RelativeLayout detailLayout;
     private Day mDay;
 
     @Override
@@ -30,8 +43,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         mRealm = Realm.getDefaultInstance();
 
@@ -44,6 +55,18 @@ public class DetailActivity extends AppCompatActivity {
             RealmResults<Day> realmResults = dayRealmQuery.findAll();
             if (realmResults.size() > 0) {
                 mDay = realmResults.get(0);
+
+                occasion.setText(mDay.getOccasion());
+                Date date = mDay.getDate();
+                DateTime dateTime = new DateTime(date);
+                int days = Days.daysBetween(new DateTime(), dateTime).getDays();
+
+                String daysBefore = days + " days";
+                daysUntil.setText(daysBefore);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("LLLL dd, yyyy", Locale.getDefault());
+                String countingDown = "Counting down to " + sdf.format(date);
+                counting.setText(countingDown);
             }
         }
 

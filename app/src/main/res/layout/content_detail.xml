@@ -14,4 +14,30 @@
     tools:showIn="@layout/activity_detail"
     android:id="@+id/detail_layout">
 
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/occasion_tv"
+              tools:text="Nigeria"
+              android:layout_centerHorizontal="true"
+              android:textSize="22sp"
+              android:textColor="@color/colorTextAndIcons"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/counting_tv"
+              tools:text="Counting down to\n July 10,2015"
+              android:gravity="center_horizontal"
+              android:layout_alignParentBottom="true"
+              android:layout_centerHorizontal="true"
+              android:textSize="16sp"
+              android:textColor="@color/colorTextAndIcons"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/days_until_tv"
+              android:layout_centerInParent="true"
+              tools:text="20 days"
+              android:textSize="24sp"
+              android:textColor="@color/colorTextAndIcons"/>
+
 </RelativeLayout>

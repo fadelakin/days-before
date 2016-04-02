@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
@@ -34,6 +36,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
         Day day = mDays.get(position);
 
         String occasion = day.getOccasion();
+        holder.event.setText(occasion);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
+        @Bind(R.id.event_cv) TextView event;
 
         public ViewHolder(View itemView) {
             super(itemView);
