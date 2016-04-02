@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     private Realm mRealm;
 
     @Bind(R.id.detail_layout) RelativeLayout detailLayout;
+    private Day mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +38,13 @@ public class DetailActivity extends AppCompatActivity {
         // get the timestamp for the day passed in and try to find that day
         String timeStamp = (String) getIntent().getSerializableExtra("time");
         if (timeStamp != null) {
-            Realm realm = Realm.getDefaultInstance();
 
-            /*RealmQuery<Poem> query = realm.where(Poem.class);
-            query.equalTo("timestamp", poemTimestamp);
-
-            RealmResults<Poem> results = query.findAll();
-            if (results.size() > 0) {
-                Poem poem = results.get(0);
-                mTitleET.setText(poem.getTitle());
-                toolbar.setTitle(poem.getTitle());
-                mPoemET.setText(poem.getPoem());
-                if (poem.getAuthor() != null)
-                    mAuthorET.setText(poem.getAuthor());
-            }*/
+            RealmQuery<Day> dayRealmQuery = mRealm.where(Day.class);
+            dayRealmQuery.equalTo("timestamp", timeStamp);
+            RealmResults<Day> realmResults = dayRealmQuery.findAll();
+            if (realmResults.size() > 0) {
+                mDay = realmResults.get(0);
+            }
         }
 
 
@@ -58,12 +52,12 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setColor() {
-        /*detailLayout.setBackgroundColor(day.getColor());
+        detailLayout.setBackgroundColor(mDay.getColor());
 
         // generate a new color based on the background color for the status bar
         // using hsv because it makes it super easy bruh.
         float[] hsv = new float[3];
-        Color.colorToHSV(day.getColor(), hsv);
+        Color.colorToHSV(mDay.getColor(), hsv);
         hsv[2] *= 0.75f; // value component
         int statusBarColor = Color.HSVToColor(hsv);
 
@@ -73,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
             w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             w.setStatusBarColor(statusBarColor);
-        }*/
+        }
     }
 
 }
