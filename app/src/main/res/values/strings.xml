@@ -5,4 +5,10 @@
     <string name="title_activity_new_day">NewDayActivity</string>
     <string name="occasion_hint">What are you looking forward to?</string>
     <string name="save">Save</string>
+    <string name="request_permission">This app saves screenshots when sharing your event so it needs
+        to be able to save them
+    </string>
+    <string name="write_permission">This app needs to be able to save screenshots on your device for
+        sharing.
+    </string>
 </resources>
