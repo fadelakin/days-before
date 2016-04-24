@@ -11,4 +11,5 @@
     <string name="write_permission">This app needs to be able to save screenshots on your device for
         sharing.
     </string>
+    <string name="save_content_desc">Save button</string>
 </resources>

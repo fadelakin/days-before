@@ -30,6 +30,8 @@ import io.realm.Realm;
 public class NewDayActivity extends AppCompatActivity {
 
     // TODO: Clean up UI
+    // TODO: check for occasion before saving something
+    // TODO: > so title cannot be empty
 
     @Bind(R.id.occasion_edit) EditText occasion;
     @Bind(R.id.datePicker) DatePicker mDatePicker;

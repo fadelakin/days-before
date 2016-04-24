@@ -110,7 +110,7 @@ public class DetailActivity extends AppCompatActivity {
         int statusBarColor = Color.HSVToColor(hsv);
 
         // set status bar to a darker color of the background
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window w = getWindow();
             w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -125,7 +125,7 @@ public class DetailActivity extends AppCompatActivity {
         detailLayout.setDrawingCacheEnabled(true);
         mBitmap = detailLayout.getDrawingCache();
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestWriteStoragePermission();
         } else {
@@ -167,7 +167,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void requestWriteStoragePermission() {
-        if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             new StorageConfirmationDialog().show(getFragmentManager(), FRAGMENT_DIALOG);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
